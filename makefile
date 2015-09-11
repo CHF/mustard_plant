@@ -5,6 +5,6 @@ DIR?="test/**/*.js"
 
 test:
 	DB="mongodb://localhost/test" \
-		istanbul cover _mocha ./routes -- $(FLAGS) $(DIR)
+		istanbul cover _mocha ./routes -- $(FLAGS) $(DIR) && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 
 .PHONY: test
