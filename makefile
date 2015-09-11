@@ -5,6 +5,6 @@ DIR?="test/**/*.js"
 
 test:
 	DB="mongodb://localhost/test" \
-	mocha ./routes $(FLAGS) $(DIR)
+		istanbul cover _mocha ./routes -- $(FLAGS) $(DIR)
 
 .PHONY: test

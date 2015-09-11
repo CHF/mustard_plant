@@ -1,5 +1,6 @@
 var express = require('express'),
     logger = require('morgan'),
+    mongoose = require('mongoose'),
     bodyParser = require('body-parser');
 
 var routes = require('./routes/index'),
@@ -8,7 +9,12 @@ var routes = require('./routes/index'),
 
 var app = express();
 
-app.use(logger('dev'));
+mongoose.connect('mongodb://localhost/mustard');
+
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'development') {
+  app.use(logger('dev'));
+}
+
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
   req.user = 'Andrew';

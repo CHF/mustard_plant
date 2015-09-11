@@ -12,6 +12,7 @@ var userSchema = new Schema({
   email: {
     type: String,
     index: true,
+    sparse: true,
     unique: true
   },
   password: {
@@ -22,6 +23,7 @@ var userSchema = new Schema({
   lastName: String,
   profilePictureURL: {
     unique: true,
+    sparse: true,
     type: String
   },
   posts: [{
@@ -30,6 +32,7 @@ var userSchema = new Schema({
   }],
   profileUrl: {
     type: String,
+    sparse: true,
     unique: true
   },
   settings: {
